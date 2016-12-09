@@ -59,6 +59,8 @@
 
 <script>
   const playingClass = 'playing'
+  const transitionTime = 70
+
   document.addEventListener('keydown', keyDownAction)
 
   function keyDownAction (e) {
@@ -79,10 +81,16 @@
 
   function toggleClass($key) {
     $key.classList.add(playingClass)
-    setTimeout(() => {
-      $key.classList.remove(playingClass)
-    }, 70)
   }
+
+  function transitionEndAction (e) {
+    if (e.propertyName === 'transform')
+      e.currentTarget.classList.remove(playingClass)
+  }
+
+  document.querySelectorAll('.key').forEach(item => {
+    item.addEventListener('transitionend', transitionEndAction)
+  })
 </script>
 
 
