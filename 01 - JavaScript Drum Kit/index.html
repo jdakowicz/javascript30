@@ -59,9 +59,6 @@
 
 <script>
   const playingClass = 'playing'
-  const transitionTime = 70
-
-  document.addEventListener('keydown', keyDownAction)
 
   function keyDownAction (e) {
     const keyQuery = `[data-key="${e.keyCode}"]`
@@ -84,9 +81,12 @@
   }
 
   function transitionEndAction (e) {
-    if (e.propertyName === 'transform')
+    if (e.propertyName === 'transform') {
       e.currentTarget.classList.remove(playingClass)
+    }
   }
+
+  document.addEventListener('keydown', keyDownAction)
 
   document.querySelectorAll('.key').forEach(item => {
     item.addEventListener('transitionend', transitionEndAction)
