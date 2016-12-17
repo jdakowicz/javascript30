@@ -26,6 +26,12 @@
       misc styles, nothing to do with CSS variables
     */
 
+    :root {
+      --base: #ffc600;
+      --blur: 10px;
+      --spacing: 10px;
+    }
+
     body {
       text-align: center;
     }
@@ -50,9 +56,46 @@
     input {
       width:100px;
     }
+
+    img {
+      border-style: solid;
+      border-color: var(--base);
+      border-width: var(--spacing);
+      filter: blur(var(--blur));
+
+    }
   </style>
 
   <script>
+    const dataAttribute = 'data-sizing'
+
+    function init () {
+      const inputs = document.querySelectorAll('input')
+      Array.from(inputs).forEach(item => {
+        addInputHandlers(item)
+      })
+    }
+
+    function addInputHandlers(input) {
+      input.addEventListener('change', changeEvent)
+      input.addEventListener('mousemove', changeEvent)
+    }
+
+    function changeEvent (e) {
+      const target = e.currentTarget
+      const { value, name } = target
+
+      const finalValue = `${value}${getSizing(target)}`
+
+      document.documentElement.style.setProperty(`--${name}`, finalValue)
+    }
+
+    function getSizing(input) {
+      if (!input.attributes[dataAttribute]) return ''
+      return input.attributes[dataAttribute].value
+    }
+
+    init()
   </script>
 
 </body>
