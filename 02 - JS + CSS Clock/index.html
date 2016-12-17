@@ -46,6 +46,7 @@
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
         0 0 10px rgba(0,0,0,0.2);
+      transform: rotate(90deg);
     }
 
     .clock-face {
@@ -61,11 +62,61 @@
       background:black;
       position: absolute;
       top:50%;
+      transition:300ms ease-in-out;
+      transform-origin:calc(100% - 3px);
     }
 
   </style>
 
   <script>
+    const clockHands = {
+      hours: document.querySelector('.hour-hand'),
+      minutes: document.querySelector('.min-hand'),
+      seconds: document.querySelector('.second-hand'),
+    }
+    let isInitial = true
+
+    function startTimer () {
+      setInterval(rotateHands, 1000)
+    }
+
+    function rotateHands () {
+      const { hours, minutes, seconds } = getCurrentTimeValues()
+
+      rotateElement(clockHands.hours, hours)
+      rotateElement(clockHands.minutes, minutes)
+      rotateElement(clockHands.seconds, seconds)
+    }
+
+    function rotateElement(element, value) {
+      if (value === 0)  {
+        element.style.transform = 'rotate(360deg)'
+        // Couldn't find out better solution for this :(
+        setTimeout(() => {
+          element.style.transition = 'none'
+          setTimeout(() => {
+            element.style.transform = 'rotate(0deg)'
+            setTimeout(() => {
+              element.style.transition = ''
+              element.style.transform = `rotate(${value}deg)`
+            }, 10)
+          }, 10)
+        }, 301)
+      } else {
+        element.style.transform = `rotate(${value}deg)`
+      }
+    }
+
+    function getCurrentTimeValues () {
+      const time = (new Date())
+      const hours = time.getHours() * 30
+      const minutes = time.getMinutes() * 6
+      const seconds = time.getSeconds() * 6
+
+      return { hours, minutes, seconds }
+    }
+
+    startTimer()
 
 
   </script>
