@@ -24,6 +24,7 @@
     .panels {
       min-height:100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -40,7 +41,13 @@
         background 0.2s;
       font-size: 20px;
       background-size:cover;
+      flex: 1;
       background-position:center;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+      flex-direction: column;
     }
 
 
@@ -54,6 +61,22 @@
       margin:0;
       width: 100%;
       transition:transform 0.5s;
+      display: flex;
+      flex: 1 0 auto;
+      justify-content: center;
+      align-items: center;
+    }
+    .panel > *:first-child {
+      transform: translateY(-100%);
+    }
+    .panel.is-opened > *:first-child {
+      transform: translateY(0);
+    }
+    .panel > *:last-child {
+      transform: translateY(100%);
+    }
+    .panel.is-opened > *:last-child {
+      transform: translateY(0);
     }
 
     .panel p {
@@ -67,6 +90,7 @@
     }
 
     .panel.open {
+      flex: 5;
       font-size:40px;
     }
 
@@ -107,7 +131,41 @@
   </div>
 
   <script>
+    const panels = Array.from(document.querySelectorAll('.panel'))
+    const activeClass = 'is-opened'
+    const openClass = 'open'
+    const transitionTime = 700
 
+    function clear () {
+      panels.forEach(item => {
+        item.classList.remove(openClass)
+        setTimeout(() => {
+          item.classList.remove(activeClass)
+        }, transitionTime)
+      })
+    }
+
+    function togglePanel (classes) {
+      classes.toggle(openClass)
+      setTimeout(() => {
+        classes.toggle(activeClass)
+      }, transitionTime)
+    }
+
+    function clickAction (e) {
+      e.preventDefault()
+      const elementClasses = e.currentTarget.classList
+      if (!elementClasses.contains(openClass)) {
+        clear()
+      }
+      togglePanel(elementClasses)
+    }
+
+    function init () {
+      panels.forEach(item => item.addEventListener('click', clickAction))
+    }
+
+    init()
   </script>
 
 
