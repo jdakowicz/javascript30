@@ -15,7 +15,58 @@
     </ul>
   </form>
 <script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json'
+const input = document.querySelector('.search')
+const wrapper = document.querySelector('.suggestions')
+const cities = []
+let delay = null
+
+function fetchData () {
+  fetch(endpoint).then(res => res.json()).then(res => {
+    cities.push(...res)
+  })
+}
+function getTemplate(obj, regex) {
+  const text = `${obj.city}, ${obj.state}`.replace(regex, result => {
+    return `<span class="hl">${result}</span>`
+  })
+  return (
+    `<li>
+      <span class="name">${text}</span>
+      <span class="population">${obj.population}</span>
+    </li>`
+  )
+}
+function displayResult (result, regex) {
+  wrapper.innerHTML = result.map(item => getTemplate(item, regex))
+}
+function filterCities (text) {
+  const regex = new RegExp(text, 'gi')
+  const result = cities.filter(item => {
+    return item.city.match(regex) || item.state.match(regex)
+  })
+  displayResult(result, regex)
+}
+function init () {
+  fetchData()
+  input.addEventListener('keyup', e => {
+    const val = e.currentTarget.value
+    debounce(() => {
+      filterCities(val)
+    })
+  })
+}
+
+function debounce (cb) {
+  if (delay) {
+      clearTimeout(delay)
+    }
+    delay = setTimeout(() => {
+      cb()
+    }, 250)
+}
+
+init()
 
 </script>
   </body>
