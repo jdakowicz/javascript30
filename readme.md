@@ -11,7 +11,7 @@ You can grab the fresh version of course at [https://JavaScript30.com](JavaScrip
 - [x] [CSS Variables](https://jdakowicz.github.io/javascript30/03%20-%20CSS%20Variables/)
 - [x] [Array Cardio Day 1](https://jdakowicz.github.io/javascript30/04%20-%20Array%20Cardio%20Day%201/)
 - [x] [Flex Panel Gallery](https://jdakowicz.github.io/javascript30/05%20-%20Flex%20Panel%20Gallery/)
-- [ ] [Type Ahead](https://jdakowicz.github.io/javascript30/06%20-%20Type%20Ahead/)
+- [x] [Type Ahead](https://jdakowicz.github.io/javascript30/06%20-%20Type%20Ahead/)
 - [ ] [Array Cardio Day 2](https://jdakowicz.github.io/javascript30/07%20-%20Array%20Cardio%20Day%202/)
 - [ ] [Fun with HTML5 Canvas](https://jdakowicz.github.io/javascript30/08%20-%20Fun%20with%20HTML5%20Canvas/)
 - [ ] [Dev Tools Domination](https://jdakowicz.github.io/javascript30/09%20-%20Dev%20Tools%20Domination/)
