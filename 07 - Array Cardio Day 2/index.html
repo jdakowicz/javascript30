@@ -25,20 +25,42 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19?
+    const date = new Date()
+    const thisYear = date.getFullYear()
+    const one19 = people.some(person => thisYear - person.year >= 19)
+    console.log('1. Is at least one person 19?')
+    console.log(one19)
 
     // Array.prototype.every() // is everyone 19?
+    const every19 = people.every(person => thisYear - person.year >= 19)
+    console.log('2. Is everyone 19?')
+    console.log(every19)
+
 
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const commentById = comments.find(item => item.id === 823423)
+    console.log('3. Find the comment with the ID of 823423')
+    console.log(commentById)
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const index = comments.findIndex(item => item === commentById)
+    console.log('Find the comment with this ID')
+    console.log(`ID = ${index}, Array: `)
+    console.log(comments[index])
 
+    // comments.splice(index, 1)
 
-    // comments.splice(index, 1);
+    const commentsWithoutOne = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ]
+    console.log(commentsWithoutOne)
+    console.log(comments)
 
 
 
