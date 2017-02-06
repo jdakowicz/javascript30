@@ -3,10 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
+  <style>
+    canvas {
+      border: 5px solid black;
+      margin: auto;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+  const canvas = document.querySelector('#draw')
+  const context = canvas.getContext('2d')
+  const maxWidth = 100
+  const minWidth = 10
+  let isDrawing = false
+  let lastX = 0
+  let lastY = 0
+  let hue = 0
+  let isGettingBigger = true
+
+  function initSettings () {
+    context.strokeStyle = '#000'
+    context.lineJoin  = 'round'
+    context.lineCap  = 'round'
+    context.lineWidth = minWidth
+  }
+
+  function increaseHue () {
+    hue++
+    if (hue >= 360) {
+      hue = 0
+    }
+  }
+
+  function changeStrokeStyle () {
+    context.strokeStyle = `hsl(${hue}, 100%, 50%)`
+    if (context.lineWidth > maxWidth || context.lineWidth < minWidth) {
+      isGettingBigger = !isGettingBigger
+    }
+    isGettingBigger ? context.lineWidth++ : context.lineWidth--
+  }
+
+  function drawLine (toX, toY) {
+    context.beginPath()
+    context.moveTo(lastX, lastY)
+    context.lineTo(toX, toY)
+    context.stroke()
+  }
+
+  function updateCoords (newX, newY) {
+    lastX = newX
+    lastY = newY
+  }
+
+  function draw (e) {
+    const newY = e.offsetY
+    const newX = e.offsetX
+
+    increaseHue()
+    changeStrokeStyle()
+    drawLine(newX, newY)
+    updateCoords(newX, newY)
+  }
+
+  function disableDrawing () {
+    isDrawing = false
+  }
+
+  function enableDrawing () {
+    isDrawing = true
+  }
+
+  function init () {
+    initSettings()
+
+    canvas.addEventListener('mousedown', e => {
+      updateCoords(e.offsetX, e.offsetY)
+      enableDrawing()
+    })
+    canvas.addEventListener('mousemove', e => {
+      if (isDrawing) {
+        draw(e)
+      }
+    })
+    canvas.addEventListener('mouseout', disableDrawing)
+    canvas.addEventListener('mouseup', disableDrawing)
+
+  }
+
+  init()
 </script>
 
 <style>
