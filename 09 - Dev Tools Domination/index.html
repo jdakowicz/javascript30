@@ -18,28 +18,59 @@
     }
 
     // Regular
+    console.log('regular console log')
+
+    // Table
+    console.table(dogs)
 
     // Interpolated
+    const exampleName = 'John'
+    console.log(`hello my name is ${exampleName}`)
 
     // Styled
+    console.log('hello this is %cstyled text', 'color: #fff; background-color:green;')
 
     // warning!
+    console.warn('This is example warning message')
 
     // Error :|
+    console.error('This is example error message')
 
     // Info
+    console.info('This is example info message')
 
     // Testing
+    console.assert(true === false, 'This is failure assert message')
+    console.assert(true === true, 'This is success assert message which will not show')
 
     // clearing
+    // console.clear() // commented this because we can't see previous results
 
     // Viewing DOM Elements
+    console.log(document.querySelector('p'))
+    console.dir(document.querySelector('p'))
 
     // Grouping together
+    console.group('test group')
+    console.log('Example message inside a group')
+    console.log('Example message inside a group')
+    console.log('Example message inside a group')
+    console.groupEnd('test group')
 
     // counting
 
+    console.count('counter')
+    console.count('counter')
+    console.count('counter')
+    console.count('counter')
+    console.count('counter')
+    console.count('counter')
+
     // timing
+    console.time('timer')
+    setTimeout(() => {
+      console.timeEnd('timer')
+    }, Math.random() * 1000)
 
   </script>
 </body>
