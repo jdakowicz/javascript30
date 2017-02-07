@@ -14,7 +14,7 @@ You can grab the fresh version of course at [https://JavaScript30.com](JavaScrip
 - [x] [Type Ahead](https://jdakowicz.github.io/javascript30/06%20-%20Type%20Ahead/)
 - [x] [Array Cardio Day 2](https://jdakowicz.github.io/javascript30/07%20-%20Array%20Cardio%20Day%202/)
 - [x] [Fun with HTML5 Canvas](https://jdakowicz.github.io/javascript30/08%20-%20Fun%20with%20HTML5%20Canvas/)
-- [ ] [Dev Tools Domination](https://jdakowicz.github.io/javascript30/09%20-%20Dev%20Tools%20Domination/)
+- [x] [Dev Tools Domination](https://jdakowicz.github.io/javascript30/09%20-%20Dev%20Tools%20Domination/)
 - [ ] [Hold Shift and Check Checkboxes](https://jdakowicz.github.io/javascript30/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes/)
 - [ ] [Custom Video Player](https://jdakowicz.github.io/javascript30/11%20-%20Custom%20Video%20Player/)
 - [ ] [Key Sequence Detection](https://jdakowicz.github.io/javascript30/12%20-%20Key%20Sequence%20Detection/)
