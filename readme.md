@@ -18,7 +18,7 @@ You can grab the fresh version of course at [https://JavaScript30.com](JavaScrip
 - [x] [Hold Shift and Check Checkboxes](https://jdakowicz.github.io/javascript30/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes/)
 - [x] [Custom Video Player](https://jdakowicz.github.io/javascript30/11%20-%20Custom%20Video%20Player/)
 - [x] [Key Sequence Detection](https://jdakowicz.github.io/javascript30/12%20-%20Key%20Sequence%20Detection/)
-- [ ] [Slide in on Scroll](https://jdakowicz.github.io/javascript30/13%20-%20Slide%20in%20on%20Scroll/)
+- [x] [Slide in on Scroll](https://jdakowicz.github.io/javascript30/13%20-%20Slide%20in%20on%20Scroll/)
 - [ ] [JavaScript References VS Copying](https://jdakowicz.github.io/javascript30/14%20-%20JavaScript%20References%20VS%20Copying/)
 - [ ] [LocalStorage](https://jdakowicz.github.io/javascript30/15%20-%20LocalStorage/)
 - [ ] [Mouse Move Shadow](https://jdakowicz.github.io/javascript30/16%20-%20Mouse%20Move%20Shadow/)

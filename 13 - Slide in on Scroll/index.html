@@ -57,6 +57,25 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+    const images = document.querySelectorAll('.slide-in')
+    const activeClass = 'active'
+
+    const checkImages = e => {
+      images.forEach(image => {
+        const entryPoint = window.scrollY + window.innerHeight - (image.height / 2)
+        const imageBottom = image.offsetTop + image.height
+        const isVisible = entryPoint > image.offsetTop
+        const isHidden = window.scrollY > imageBottom
+        if (isVisible && !isHidden) {
+          image.classList.add(activeClass)
+        } else {
+          image.classList.remove(activeClass)
+        }
+      })
+    }
+
+    window.addEventListener('scroll', debounce(checkImages))
   </script>
 
   <style>
