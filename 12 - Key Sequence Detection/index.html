@@ -7,6 +7,27 @@
 </head>
 <body>
 <script>
+  const secretSequence = 'jakubczyk'
+  let pressedSequence = ''
+
+  const updateSequence = character => {
+    pressedSequence += character
+
+    if (pressedSequence.length > secretSequence.length) {
+      pressedSequence = pressedSequence.slice(-secretSequence.length)
+    }
+  }
+
+  const checkSequence = () => {
+    if (pressedSequence === secretSequence) {
+      cornify_add()
+    }
+  }
+
+  document.addEventListener('keyup', event => {
+    updateSequence(event.key)
+    checkSequence()
+  })
 </script>
 </body>
 </html>
